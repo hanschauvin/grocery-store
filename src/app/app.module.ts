@@ -1,3 +1,6 @@
+import { AdminProductsComponent } from './admin/products/products.component';
+import { ProductsComponent } from './products/products.component';
+import { ShoppingCartComponent } from './purchase/shopping-cart/shopping-cart.component';
 import { MatComponentsModule } from './modules/mat-components.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,11 +12,29 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { HomeComponent } from './layout/home/home.component';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { CheckOutComponent } from './purchase/check-out/check-out.component';
+import { OrderSuccessComponent } from './purchase/order-success/order-success.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AdminOrdersComponent } from './admin/orders/orders.component';
+import { MyOrdersComponent } from './purchase/my-orders/my-orders.component';
+
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, ShoppingCartComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    ShoppingCartComponent,
+    HomeComponent,
+    ProductsComponent,
+    CheckOutComponent,
+    OrderSuccessComponent,
+    LoginComponent,
+    AdminOrdersComponent,
+    AdminProductsComponent,
+    MyOrdersComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,7 +43,7 @@ import { HomeComponent } from './layout/home/home.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+// using the angular material for UI so importing only the functional parts of bootstrap
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/mixins";
+// @import "~bootstrap/scss/reboot";
+// @import "~bootstrap/scss/grid";
+// @import "~bootstrap/scss/utilities";
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// removes the border outline on button clicks
+// as this is added in bootstrap and not material
+button:focus {
+    outline: none;
+    border: 0;
+  }
+  

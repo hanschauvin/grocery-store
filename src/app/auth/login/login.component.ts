@@ -4,7 +4,7 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { take, catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +14,17 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   googleIcon = faGoogle;
   failedLogin = false;
-  constructor(private auth: AuthServiceService, private router: Router) {}
+  constructor(
+    private auth: AuthServiceService,
+    private router: Router,
+    private currentRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {}
 
   login() {
     this.failedLogin = false;
-    
+
     this.auth
       .loginViaGoogle()
       .pipe(
@@ -32,8 +36,12 @@ export class LoginComponent implements OnInit {
         })
       )
       .subscribe((response) => {
-        //console.log('login success:', response);
-        this.router.navigate(['/']);
+        // retrieve the query param from the snapshot to redirect
+        let url = this.currentRoute.snapshot.queryParamMap.get('returnUrl');
+        if (url === null) {
+          url = '/';
+        }       
+        this.router.navigate([url]);
       });
   }
 }

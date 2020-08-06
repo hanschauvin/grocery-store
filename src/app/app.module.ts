@@ -1,3 +1,5 @@
+import { AuthGuard } from './service/auth-guard.service';
+import { AuthServiceService } from './service/auth-service.service';
 import { AdminProductsComponent } from './admin/products/products.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './purchase/shopping-cart/shopping-cart.component';
@@ -21,7 +23,6 @@ import { AdminOrdersComponent } from './admin/orders/orders.component';
 import { MyOrdersComponent } from './purchase/my-orders/my-orders.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginComponent,
     AdminOrdersComponent,
     AdminProductsComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AngularFireAuthModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [AuthServiceService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -19,6 +19,7 @@ import { OrderSuccessComponent } from './purchase/order-success/order-success.co
 import { LoginComponent } from './auth/login/login.component';
 import { AdminOrdersComponent } from './admin/orders/orders.component';
 import { MyOrdersComponent } from './purchase/my-orders/my-orders.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { MyOrdersComponent } from './purchase/my-orders/my-orders.component';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

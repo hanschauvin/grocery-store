@@ -1,17 +1,26 @@
 <mat-toolbar color="primary">
-  <button mat-button routerLink="/" style="font-size: 20px;">Produce Deez</button>
+  <button mat-button routerLink="/" style="font-size: 20px;">
+    Produce Deez
+  </button>
   <span class="tool-spacer"></span>
   <button mat-icon-button routerLink="/cart">
     <mat-icon>shopping_cart</mat-icon>
   </button>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>account_circle</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/login">Login</button>
-    <button mat-menu-item routerLink="/orders">My Orders</button>
-    <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
-    <button mat-menu-item routerLink="/admin/products">Manage Products</button>
-    <button mat-menu-item>Logout</button>
-  </mat-menu>
+  <div *ngIf="auth.user$ | async as user; else anonUser">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <span class="displayName">{{ user.displayName }}</span>
+      <button mat-menu-item routerLink="/orders">My Orders</button>
+      <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
+      <button mat-menu-item routerLink="/admin/products">
+        Manage Products
+      </button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+  <ng-template #anonUser>
+    <button mat-button routerLink="/login">Login</button>
+  </ng-template>
 </mat-toolbar>

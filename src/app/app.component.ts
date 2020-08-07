@@ -1,10 +1,20 @@
+import { UserService } from './service/user.service';
+import { AuthServiceService } from './service/auth-service.service';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'grocery-store';
+  title = 'Produce Deez';
+
+  constructor(private auth: AuthServiceService, userService: UserService) {
+    auth.user$.subscribe((user) => {
+      if (user) {
+        userService.save(user);
+      }
+    });
+  }
 }

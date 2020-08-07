@@ -1,3 +1,5 @@
+import { AdminAuthGuard } from './service/admin-auth-guard.service';
+import { UserService } from './service/user.service';
 import { AuthGuard } from './service/auth-guard.service';
 import { AuthServiceService } from './service/auth-service.service';
 import { AdminProductsComponent } from './admin/products/products.component';
@@ -50,7 +52,7 @@ import { FormsModule } from '@angular/forms';
     FontAwesomeModule,
     
   ],
-  providers: [AuthServiceService, AuthGuard],
+  providers: [AuthServiceService, AuthGuard, UserService, AdminAuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

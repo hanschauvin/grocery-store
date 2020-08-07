@@ -22,6 +22,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AdminOrdersComponent } from './admin/orders/orders.component';
 import { MyOrdersComponent } from './purchase/my-orders/my-orders.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FontAwesomeModule,
+    
   ],
   providers: [AuthServiceService, AuthGuard],
   bootstrap: [AppComponent],

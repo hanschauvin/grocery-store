@@ -1,0 +1,21 @@
+@import "~@angular/material/theming";
+@import "./_variables";
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap");
+// it should not be included for each theme.
+@include mat-core();
+
+// include the custom theme components into a theme object
+$deez-theme: mat-light-theme(
+  $deez-palette-primary,
+  $deez-palette-accent,
+  $deez-palette-warn
+);
+
+// include the custom theme object into the angular material theme
+@include angular-material-theme($deez-theme);
+
+$app-typography: mat-typography-config(
+  $font-family: 'Comfortaa, Roboto, "Helvetica Neue", sans-serif',
+);
+
+@include angular-material-typography($app-typography);

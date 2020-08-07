@@ -1,0 +1,105 @@
+@import "~@angular/material/theming";
+
+$md-deezprimary: (
+    50 : #edebf2,
+    100 : #d3cedf,
+    200 : #b5adca,
+    300 : #978cb5,
+    400 : #8174a5,
+    500 : #6b5b95,
+    600 : #63538d,
+    700 : #584982,
+    800 : #4e4078,
+    900 : #3c2f67,
+    A100 : #c3b2ff,
+    A200 : #9b7fff,
+    A400 : #734cff,
+    A700 : #5f32ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-deezaccent: (
+    50 : #fff4e4,
+    100 : #ffe4bb,
+    200 : #ffd28d,
+    300 : #ffbf5f,
+    400 : #ffb23d,
+    500 : #ffa41b,
+    600 : #ff9c18,
+    700 : #ff9214,
+    800 : #ff8910,
+    900 : #ff7808,
+    A100 : #ffffff,
+    A200 : #fff8f4,
+    A400 : #ffdac1,
+    A700 : #ffcba7,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-deezwarn: (
+    50 : #ffeaea,
+    100 : #ffcbcb,
+    200 : #ffa8a8,
+    300 : #ff8585,
+    400 : #ff6b6b,
+    500 : #ff5151,
+    600 : #ff4a4a,
+    700 : #ff4040,
+    800 : #ff3737,
+    900 : #ff2727,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffd4d4,
+    A700 : #ffbbbb,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// mandatory stuff for theming
+$deez-palette-primary: mat-palette($md-deezprimary);
+$deez-palette-accent: mat-palette($md-deezaccent);
+$deez-palette-warn: mat-palette($md-deezwarn);

@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { BehaviorSubject, Observable, from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class AuthServiceService {
     .asObservable()
     .pipe(switchMap((user: Observable<firebase.User>) => user));
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth, private route: ActivatedRoute) {
     this.user.next(this.afAuth.authState);
   }
 

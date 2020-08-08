@@ -1,3 +1,5 @@
+import { AdminAuthGuard } from './service/admin-auth-guard.service';
+import { AuthGuard } from './service/auth-guard.service';
 import { MyOrdersComponent } from './purchase/my-orders/my-orders.component';
 import { AdminOrdersComponent } from './admin/orders/orders.component';
 import { AdminProductsComponent } from './admin/products/products.component';
@@ -10,16 +12,37 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
+  // Anonymous User Routes
   { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'cart', component: ShoppingCartComponent },
-  { path: 'checkout', component: CheckOutComponent },
-  { path: 'ordersuccess', component: CheckOutComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'orders', component: MyOrdersComponent },
-  { path: 'admin/products', component: AdminProductsComponent },
-  { path: 'admin/orders', component: AdminOrdersComponent },
-  { path: 'admin', component: HomeComponent },
+
+  // Logged in User Routes
+  { path: 'checkout', component: CheckOutComponent, canActivate: [AuthGuard] },
+  {
+    path: 'ordersuccess',
+    component: CheckOutComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+
+  // Admin Routes
+  {
+    path: 'admin/products',
+    component: AdminProductsComponent,
+    canActivate: [AuthGuard, AdminAuthGuard],
+  },
+  {
+    path: 'admin/orders',
+    component: AdminOrdersComponent,
+    canActivate: [AuthGuard, AdminAuthGuard],
+  },
+  {
+    path: 'admin',
+    component: HomeComponent,
+    canActivate: [AuthGuard, AdminAuthGuard],
+  },
 ];
 
 @NgModule({

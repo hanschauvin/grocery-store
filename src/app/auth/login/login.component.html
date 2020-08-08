@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="content-box offset-md-4 col-md-4">
+  <div class="text-center">
+    <h2 class="font-weight-bold">Please Login with Google</h2>
+    <mat-divider></mat-divider>
+    <p class="mt-2">It's the only option anyways...</p>
+    <button mat-raised-button class="mb-1" color="accent" (click)="login()"
+    [disabled]="loginLoading">
+      <fa-icon [icon]="googleIcon"></fa-icon>
+      Login
+    </button>
+    <div *ngIf="failedLogin" class="warn-color">
+      Failed to login.
+    </div>
+    <div *ngIf="loginLoading" class="loading-content">
+      <mat-spinner diameter="18"></mat-spinner>
+      <div class="pl-1">
+        Please wait...
+      </div>
+    </div>
+  </div>
+</div>

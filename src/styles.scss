@@ -1,26 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 // using the angular material for UI so importing only the functional parts of bootstrap
-// @import "~bootstrap/scss/functions";
-// @import "~bootstrap/scss/variables";
-// @import "~bootstrap/scss/mixins";
-// @import "~bootstrap/scss/reboot";
-// @import "~bootstrap/scss/grid";
-// @import "~bootstrap/scss/utilities";
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/utilities";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/theming";
+@import "./theme/variables";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #e4e2e2;
+}
 
 // removes the border outline on button clicks
 // as this is added in bootstrap and not material
 button:focus {
-    outline: none;
-    border: 0;
-  }
-  
-  // temp for layout purposes
-  p {
-    padding: 50px;
-  }
+  outline: none;
+  border: 0;
+}
+
+.content-box {
+  background-color: white;
+  border-radius: 10px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.warn-color {
+  color: mat-color($deez-palette-warn);
+}

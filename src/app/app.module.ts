@@ -1,3 +1,8 @@
+import { IAppState, rootReducer, INITIAL_STATE } from './../redux/store';
+import { AdminAuthGuard } from './service/admin-auth-guard.service';
+import { UserService } from './service/user.service';
+import { AuthGuard } from './service/auth-guard.service';
+import { AuthServiceService } from './service/auth-service.service';
 import { AdminProductsComponent } from './admin/products/products.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './purchase/shopping-cart/shopping-cart.component';
@@ -19,7 +24,10 @@ import { OrderSuccessComponent } from './purchase/order-success/order-success.co
 import { LoginComponent } from './auth/login/login.component';
 import { AdminOrdersComponent } from './admin/orders/orders.component';
 import { MyOrdersComponent } from './purchase/my-orders/my-orders.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminProductItemComponent } from './admin/product-item/product-item.component';
+import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 @NgModule({
   declarations: [
@@ -33,7 +41,8 @@ import { MyOrdersComponent } from './purchase/my-orders/my-orders.component';
     LoginComponent,
     AdminOrdersComponent,
     AdminProductsComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    AdminProductItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,8 +53,16 @@ import { MyOrdersComponent } from './purchase/my-orders/my-orders.component';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgReduxModule
   ],
-  providers: [],
+  providers: [AuthServiceService, AuthGuard, UserService, AdminAuthGuard],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(redux: NgRedux<IAppState>) {
+    redux.configureStore(rootReducer, INITIAL_STATE);
+  }
+}

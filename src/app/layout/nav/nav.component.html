@@ -11,16 +11,15 @@
     <mat-menu #menu="matMenu">
       <span class="displayName">{{ user.displayName }}</span>
       <button mat-menu-item routerLink="/orders">My Orders</button>
-      <button mat-menu-item routerLink="/admin/orders" *ngIf="isAdmin$ | async">
-        Manage Orders
-      </button>
-      <button
-        mat-menu-item
-        routerLink="/admin/products"
-        *ngIf="isAdmin$ | async"
-      >
-        Manage Products
-      </button>
+      <ng-container *ngIf="isAdmin$ | async">
+        <button mat-menu-item routerLink="/admin/orders">
+          Manage Orders
+        </button>
+        <button mat-menu-item routerLink="/admin/products">
+          Manage Products
+        </button>
+      </ng-container>
+
       <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
   </div>

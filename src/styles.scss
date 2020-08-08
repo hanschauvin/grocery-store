@@ -26,6 +26,13 @@ button:focus {
   border: 0;
 }
 
+.content-box {
+  background-color: white;
+  border-radius: 10px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .warn-color {
   color: mat-color($deez-palette-warn);
 }

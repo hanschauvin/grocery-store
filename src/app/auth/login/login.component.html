@@ -1,9 +1,10 @@
-<div class="login-body offset-md-4 col-md-4">
+<div class="content-box offset-md-4 col-md-4">
   <div class="text-center">
     <h2 class="font-weight-bold">Please Login with Google</h2>
     <mat-divider></mat-divider>
     <p class="mt-2">It's the only option anyways...</p>
-    <button mat-raised-button class="mb-1" color="accent" (click)="login()">
+    <button mat-raised-button class="mb-1" color="accent" (click)="login()"
+    [disabled]="loginLoading">
       <fa-icon [icon]="googleIcon"></fa-icon>
       Login
     </button>

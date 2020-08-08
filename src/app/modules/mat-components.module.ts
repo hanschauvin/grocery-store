@@ -5,6 +5,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   exports: [
@@ -13,7 +17,10 @@ import {MatDividerModule} from '@angular/material/divider';
     MatMenuModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatDividerModule
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
 })
 export class MatComponentsModule {}

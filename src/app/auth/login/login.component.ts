@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private currentRoute: ActivatedRoute,
     private ref: ChangeDetectorRef
-  ) {}
+  ) {  }
 
   ngOnInit(): void {}
 
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       )
       .subscribe((response) => {
         this.loginLoading = false;
-        
+
         // retrieve the query param from the snapshot to redirect
         let url = this.currentRoute.snapshot.queryParamMap.get('returnUrl');
         if (url === null) {

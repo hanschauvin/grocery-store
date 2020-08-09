@@ -9,7 +9,9 @@
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <span class="displayName">{{ user.displayName }}</span>
+      <span class="displayName"
+        ><strong>{{ user.displayName }}</strong></span
+      >
       <button mat-menu-item routerLink="/orders">My Orders</button>
       <ng-container *ngIf="isAdmin$ | async">
         <button mat-menu-item routerLink="/admin/orders">

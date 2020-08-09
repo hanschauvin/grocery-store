@@ -44,7 +44,7 @@ export class AdminProductItemComponent implements OnInit {
     if (!this.productForm.valid) {
       this.productForm.markAllAsTouched();
     } else {
-      console.log('submit form:', this.productForm.value);
+      // console.log('submit form:', this.productForm.value);
       this.redux.dispatch({
         type: SAVE_PRODUCT_EDITING,
         form: this.productForm.value,

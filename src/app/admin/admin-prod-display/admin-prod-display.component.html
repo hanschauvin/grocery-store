@@ -1,0 +1,28 @@
+<ng-template #placeholder>
+    <mat-card>
+  <mat-card-header>
+    <mat-card-title>Product Name</mat-card-title>
+    <mat-card-subtitle>Category</mat-card-subtitle>
+  </mat-card-header>
+  <div class="text-center">
+    <mat-icon>wallpaper</mat-icon>
+  </div>
+  <mat-card-content>
+    $X.XX
+  </mat-card-content>
+</mat-card>
+</ng-template>
+
+<mat-card *ngIf="name | async; else placeholder">
+  <mat-card-header>
+    <mat-card-title>{{ name | async }}</mat-card-title>
+    <mat-card-subtitle>{{ category | async }}</mat-card-subtitle>
+  </mat-card-header>
+  <div class="text-center" style="overflow: hidden;">
+    <img mat-card-image src="{{ url | async }}" />
+  </div>
+  <mat-card-content>
+    {{ price | async | currency: "USD" }}
+  </mat-card-content>
+</mat-card>
+

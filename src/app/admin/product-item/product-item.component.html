@@ -1,58 +1,57 @@
-<div>
-  <div class="col-4 offset-4 text-center content-box">
-    <form [formGroup]="productForm" (ngSubmit)="submitForm()" #prodForm>
-      <div>
-        <mat-form-field class="mb-1">
-          <mat-label>Product Name</mat-label>
-          <input
-            matInput
-            [required]="true"
-            placeholder="Peanuts"
-            formControlName="productName"
-          />
-          <mat-error *ngIf="name.touched && name.hasError('required')"
-            >Product Name is required.</mat-error
-          >
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class="mb-1">
-          <mat-label for="productPrice">Price</mat-label>
-          <input matInput type="number" formControlName="productPrice" />
-          <span matPrefix>$&nbsp;</span>
-          <mat-error *ngIf="price.touched && price.hasError('required')">
-            Price is required.
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class="mb-1">
-          <mat-label for="productCategory">Category</mat-label>
-          <mat-select formControlName="productCategory">
-            <mat-option value=""></mat-option>
-            <mat-option *ngFor="let cat of nutCat" value="cat">
-              {{ cat }}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="category.touched && category.hasError('required')">
-            Category is required.
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class="mb-1">
-          <mat-label for="productUrl">Image Url</mat-label>
-          <input matInput type="text" formControlName="productUrl" />
-          <mat-error *ngIf="url.touched && url.hasError('required')">
-            Image URL is required.
-          </mat-error>
-        </mat-form-field>
-      </div>
-
+<div class="content-box p-4">
+  <form [formGroup]="productForm" (ngSubmit)="submitForm()" #prodForm>
+    <div>
+      <mat-form-field class="mb-1">
+        <mat-label>Product Name</mat-label>
+        <input
+          matInput
+          [required]="true"
+          placeholder="Peanuts"
+          formControlName="productName"
+        />
+        <mat-error *ngIf="name.touched && name.hasError('required')"
+          >Product Name is required.</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="mb-1">
+        <mat-label for="productPrice">Price</mat-label>
+        <input matInput type="number" formControlName="productPrice" />
+        <span matPrefix>$&nbsp;</span>
+        <mat-error *ngIf="price.touched && price.hasError('required')">
+          Price is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="mb-1">
+        <mat-label for="productCategory">Category</mat-label>
+        <mat-select formControlName="productCategory">
+          <mat-option value=""></mat-option>
+          <mat-option *ngFor="let cat of nutCat" [value]="cat">
+            {{ cat }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="category.touched && category.hasError('required')">
+          Category is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="mb-1">
+        <mat-label for="productUrl">Image Url</mat-label>
+        <input matInput type="text" formControlName="productUrl" />
+        <mat-error *ngIf="url.touched && url.hasError('required')">
+          Image URL is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="text-center">
       <button type="submit" mat-raised-button color="accent">
         Submit
       </button>
-      <button type="reset" mat-button color="warn">Cancel</button>
-    </form>
-  </div>
+      <button type="reset" mat-button color="warn">Reset</button>
+    </div>
+  </form>
 </div>

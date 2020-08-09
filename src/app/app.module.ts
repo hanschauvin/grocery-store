@@ -28,6 +28,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminProductItemComponent } from './admin/product-item/product-item.component';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
+import { AdminProdDisplayComponent } from './admin/admin-prod-display/admin-prod-display.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { NgRedux, NgReduxModule } from '@angular-redux/store';
     AdminProductsComponent,
     MyOrdersComponent,
     AdminProductItemComponent,
+    AdminProdDisplayComponent,
   ],
   imports: [
     BrowserModule,

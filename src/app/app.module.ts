@@ -29,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminProductItemComponent } from './admin/product-item/product-item.component';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 import { AdminProdDisplayComponent } from './admin/admin-prod-display/admin-prod-display.component';
+import { AdminProdEditComponent } from './admin/admin-prod-edit/admin-prod-edit.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,9 @@ import { AdminProdDisplayComponent } from './admin/admin-prod-display/admin-prod
     MyOrdersComponent,
     AdminProductItemComponent,
     AdminProdDisplayComponent,
+    AdminProdEditComponent,
+    
+    
   ],
   imports: [
     BrowserModule,

@@ -29,6 +29,10 @@ export class UserService {
     return this.firestore.collection('users').doc(uid).snapshotChanges();
   }
 
+  getUser(uid: string) {
+    return this.firestore.collection('users').doc(uid);
+  }
+
   getUserIsAdmin(uid: string) {
     return this.firestore
       .collection('users')
@@ -36,9 +40,9 @@ export class UserService {
       .snapshotChanges()
       .pipe(
         map((x) => {
-         if (x.payload.get('isAdmin') === true){
-           return true;
-         }else return false;
+          if (x.payload.get('isAdmin') === true) {
+            return true;
+          } else return false;
         })
       );
   }

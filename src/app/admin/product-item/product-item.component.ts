@@ -1,8 +1,15 @@
+import { ProductsService } from './../../service/products.service';
+import { ProductItemValidator } from './product-item.validators';
 import { IAppState } from './../../../redux/store';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgRedux, select } from '@angular-redux/store';
-import { SAVE_PRODUCT_EDITING } from '../../../redux/action';
+import {
+  SAVE_PRODUCT_EDITING,
+  CATEGORIES,
+  RESET_PRODUCT_EDITING,
+} from '../../../redux/action';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'admin-product-item',
@@ -11,12 +18,22 @@ import { SAVE_PRODUCT_EDITING } from '../../../redux/action';
 })
 export class AdminProductItemComponent implements OnInit {
   productForm: FormGroup;
-  nutCat = ['Cashew', 'Peanut', 'Macadamia', 'Pecan', 'Walnut'];
+  nutCat;
   @select((s: IAppState) => s.productEditing) testStuff;
-  constructor(private redux: NgRedux<IAppState>) {
+
+  constructor(
+    private redux: NgRedux<IAppState>,
+    private service: ProductsService,
+    private route: Router
+  ) {
+    this.nutCat = CATEGORIES;
+
     this.productForm = new FormGroup({
       productName: new FormControl('', [Validators.required]),
-      productPrice: new FormControl('', [Validators.required]),
+      productPrice: new FormControl('', [
+        Validators.required,
+        ProductItemValidator.ValidPrice,
+      ]),
       productCategory: new FormControl('', [Validators.required]),
       productUrl: new FormControl('', [Validators.required]),
     });
@@ -40,15 +57,27 @@ export class AdminProductItemComponent implements OnInit {
     return this.productForm.get('productUrl');
   }
 
+  UpdateDisplay() {
+    this.redux.dispatch({
+      type: SAVE_PRODUCT_EDITING,
+      form: this.productForm.value,
+    });
+  }
+
+  reset() {
+    this.redux.dispatch({ type: RESET_PRODUCT_EDITING });
+  }
+
   submitForm() {
     if (!this.productForm.valid) {
       this.productForm.markAllAsTouched();
     } else {
-      // console.log('submit form:', this.productForm.value);
+      this.service.saveProduct(this.productForm.value);
       this.redux.dispatch({
         type: SAVE_PRODUCT_EDITING,
         form: this.productForm.value,
       });
+      this.route.navigate(['/admin/products']);
     }
   }
 }

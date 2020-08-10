@@ -1,3 +1,4 @@
+import { AdminProdEditComponent } from './admin/admin-prod-edit/admin-prod-edit.component';
 import { AdminProductItemComponent } from './admin/product-item/product-item.component';
 import { AdminAuthGuard } from './service/admin-auth-guard.service';
 import { AuthGuard } from './service/auth-guard.service';
@@ -36,19 +37,19 @@ const routes: Routes = [
   },
   {
     path: 'admin/products/new',
-    component: AdminProductItemComponent,
+    component: AdminProdEditComponent,
     canActivate: [AuthGuard, AdminAuthGuard],
+  },
+  {
+    path: 'admin/product/edit',
+    component: AdminProdEditComponent,
+    canActivate: [AuthGuard, AdminAuthGuard]
   },
   {
     path: 'admin/orders',
     component: AdminOrdersComponent,
     canActivate: [AuthGuard, AdminAuthGuard],
-  },
-  {
-    path: 'admin',
-    component: HomeComponent,
-    canActivate: [AuthGuard, AdminAuthGuard],
-  },
+  }
 ];
 
 @NgModule({

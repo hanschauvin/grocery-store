@@ -1,7 +1,8 @@
 import { UserService } from './user.service';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { AuthServiceService } from './auth-service.service';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
@@ -33,11 +34,13 @@ export class AdminAuthGuard implements CanActivate {
       )
       .pipe(
         map((x) => {
-          if (x){
+          //return x;
+          console.log('is admin?', x);
+          if (x) {
             return true;
-          }
-          else{
-            this.route.navigateByUrl('/');
+          } else {
+            this.route.navigate(['/']);
+            return false;
           }
         })
       );

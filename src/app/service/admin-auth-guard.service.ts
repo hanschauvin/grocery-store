@@ -1,3 +1,4 @@
+import { NgRedux } from '@angular-redux/store';
 import { UserService } from './user.service';
 import { map, switchMap, take } from 'rxjs/operators';
 import { AuthServiceService } from './auth-service.service';
@@ -9,6 +10,7 @@ import {
   RouterStateSnapshot,
   Router,
 } from '@angular/router';
+import { IAppState } from 'src/redux/store';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,8 @@ export class AdminAuthGuard implements CanActivate {
   constructor(
     private auth: AuthServiceService,
     private userService: UserService,
-    private route: Router
+    private route: Router,
+    private redux: NgRedux<IAppState>
   ) {}
 
   // 1. Goes into the AuthService and retrieve the Observable of the firebase user.
@@ -26,6 +29,7 @@ export class AdminAuthGuard implements CanActivate {
   // 3. Then using that Obs<bool> it uses the map operator to map it to that Obs<bool>
   // 4. Finally, return the result of it back.
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    console.log('redux is admin:', this.redux.getState().isAdmin);
     return this.auth.user$
       .pipe(
         switchMap((user) => {
@@ -34,8 +38,6 @@ export class AdminAuthGuard implements CanActivate {
       )
       .pipe(
         map((x) => {
-          //return x;
-          console.log('is admin?', x);
           if (x) {
             return true;
           } else {

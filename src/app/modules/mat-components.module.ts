@@ -11,7 +11,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   exports: [
     MatToolbarModule,
@@ -25,7 +25,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSelectModule,
     MatCardModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatListModule
   ],
 })
 export class MatComponentsModule {}

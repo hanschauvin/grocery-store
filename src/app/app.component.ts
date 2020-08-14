@@ -10,7 +10,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Produce Deez';
 
-  constructor(private auth: AuthServiceService, userService: UserService) {
+  constructor(
+    private auth: AuthServiceService,
+    private userService: UserService
+  ) {
+    let userUid = '';
     auth.user$.subscribe((user) => {
       if (user) {
         userService.save(user);

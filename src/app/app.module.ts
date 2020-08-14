@@ -30,6 +30,7 @@ import { AdminProductItemComponent } from './admin/product-item/product-item.com
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 import { AdminProdDisplayComponent } from './admin/admin-prod-display/admin-prod-display.component';
 import { AdminProdEditComponent } from './admin/admin-prod-edit/admin-prod-edit.component';
+import { ProductDisplayComponent } from './Edit/product-display/product-display.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AdminProdEditComponent } from './admin/admin-prod-edit/admin-prod-edit.
     AdminProductItemComponent,
     AdminProdDisplayComponent,
     AdminProdEditComponent,
+    ProductDisplayComponent,
     
     
   ],

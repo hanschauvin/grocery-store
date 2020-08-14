@@ -8,6 +8,7 @@ export interface IAppState {
     productCategory: string;
     productUrl: string;
   };
+  isAdmin: boolean;
 }
 
 // default state
@@ -18,6 +19,7 @@ export const INITIAL_STATE: IAppState = {
     productCategory: '',
     productUrl: '',
   },
+  isAdmin: false,
 };
 
 export function rootReducer(state: IAppState, action): IAppState {

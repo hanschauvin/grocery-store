@@ -12,7 +12,9 @@ export class AdminProdDisplayComponent implements OnInit, OnDestroy {
   @select((s: IAppState) => s.productEditing.productCategory) category;
   @select((s: IAppState) => s.productEditing.productPrice) price;
   @select((s: IAppState) => s.productEditing.productUrl) url;
-  constructor(private redux: NgRedux<IAppState>) {}
+  constructor(private redux: NgRedux<IAppState>) {
+    console.log(this.redux.getState());
+  }
 
   ngOnInit(): void {}
 

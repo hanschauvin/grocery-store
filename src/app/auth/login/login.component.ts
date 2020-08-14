@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private currentRoute: ActivatedRoute,
     private ref: ChangeDetectorRef
-  ) {  }
+  ) {}
 
   ngOnInit(): void {}
 

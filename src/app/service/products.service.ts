@@ -14,8 +14,19 @@ export class ProductsService {
     return this.firestore.collection('products').add(product);
   }
 
+  updateProduct(id, product) {
+    return this.firestore
+      .collection('products')
+      .doc(id)
+      .set(product, { merge: true });
+  }
+
   deleteProduct(id) {
     return this.firestore.collection('products').doc(id).delete();
+  }
+
+  getProd(id) {
+    return this.firestore.collection('products').doc(id);
   }
 
   getProducts() {

@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title *ngIf="name | async; else placeholderTitle">{{
+      name | async
+    }}</mat-card-title>
+    <ng-template #placeholderTitle>
+      <mat-card-title>Product Name</mat-card-title>
+    </ng-template>
+
+    <mat-card-subtitle *ngIf="category | async; else phCat">{{
+      category | async
+    }}</mat-card-subtitle>
+    <ng-template #phCat>
+      <mat-card-subtitle>Category</mat-card-subtitle>
+    </ng-template>
+  </mat-card-header>
+
+  <div class="text-center" style="overflow: hidden;">
+    <img
+      *ngIf="url | async; else phImg"
+      mat-card-image
+      src="{{ url | async }}"
+    />
+    <ng-template #phImg>
+      <mat-icon>wallpaper</mat-icon>
+    </ng-template>
+  </div>
+  <mat-card-content>
+    <ng-container *ngIf="price | async; else phPrice">
+      {{ price | async | currency: "USD" }}
+    </ng-container>
+    <ng-template #phPrice>
+      $X.XX
+    </ng-template>
+  </mat-card-content>
+</mat-card>

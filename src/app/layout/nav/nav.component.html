@@ -1,5 +1,10 @@
 <mat-toolbar color="primary">
-  <a routerLink="/" class="linkTitle">Produce Deez</a>
+  <a routerLink="/">
+    <img height="50px" src="../../../assets/images/logo.png" />
+  </a>
+
+  <!-- <a routerLink="/" class="linkTitle">Produce Deez</a> -->
+
   <span class="tool-spacer"></span>
   <button mat-icon-button routerLink="/cart">
     <mat-icon>shopping_cart</mat-icon>
@@ -9,7 +14,9 @@
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <span class="displayName">{{ user.displayName }}</span>
+      <span class="displayName"
+        ><strong>{{ user.displayName }}</strong></span
+      >
       <button mat-menu-item routerLink="/orders">My Orders</button>
       <ng-container *ngIf="isAdmin$ | async">
         <button mat-menu-item routerLink="/admin/orders">

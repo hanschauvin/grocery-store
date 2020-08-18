@@ -1,5 +1,6 @@
 import { tassign } from 'tassign';
 import * as ACTIONS from './action';
+import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 
 export interface IAppState {
   productEditing: {
@@ -9,6 +10,7 @@ export interface IAppState {
     productUrl: string;
   };
   isAdmin: boolean;
+  itemsInCart: number;
 }
 
 // default state
@@ -20,6 +22,7 @@ export const INITIAL_STATE: IAppState = {
     productUrl: '',
   },
   isAdmin: false,
+  itemsInCart: 0,
 };
 
 export function rootReducer(state: IAppState, action): IAppState {
@@ -29,9 +32,12 @@ export function rootReducer(state: IAppState, action): IAppState {
       return saveProdEditing(state, action);
     case ACTIONS.RESET_PRODUCT_EDITING:
       return resetProdEditing(state, action);
+    case ACTIONS.ADD_TO_CART:
+      return addToCart(state, action);
   }
   return state;
 }
+
 function saveProdEditing(state, action) {
   return tassign(state, {
     productEditing: action.form,
@@ -47,4 +53,13 @@ function resetProdEditing(state, action) {
       productUrl: '',
     },
   });
+}
+
+function addToCart(state, action) {
+  let actionObj = action as ACTIONS.AddToCartAction;
+  console.log('state:', state);
+  return tassign(state, {
+    itemsInCart: state.itemsInCart + actionObj.itemsInCart,
+  });
+  
 }

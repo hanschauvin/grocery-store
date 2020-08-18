@@ -1,43 +1,13 @@
 <div class="row">
   <!-- The Section for the Display Portion -->
+
   <div class="col-md-4 offset-md-2">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title *ngIf="name.value; else nameDisplay">{{
-          name.value
-        }}</mat-card-title>
-        <ng-template #nameDisplay>
-          <mat-card-title>Product Name</mat-card-title>
-        </ng-template>
-
-        <mat-card-subtitle *ngIf="category.value; else catDisplay">{{
-          category.value
-        }}</mat-card-subtitle>
-        <ng-template #catDisplay>
-          <mat-card-subtitle>Category</mat-card-subtitle>
-        </ng-template>
-      </mat-card-header>
-
-      <div class="text-center" style="overflow: hidden;">
-        <img
-          *ngIf="url.value; else imgDipslay"
-          mat-card-image
-          src="{{ url.value }}"
-        />
-        <ng-template #imgDipslay>
-          <mat-icon>wallpaper</mat-icon>
-        </ng-template>
-      </div>
-
-      <mat-card-content>
-        <ng-container *ngIf="price.value; else priceDisplay">
-          {{ price.value | currency: "USD" }}
-        </ng-container>
-        <ng-template #priceDisplay>
-          $X.XX
-        </ng-template>
-      </mat-card-content>
-    </mat-card>
+    <app-product-display-card
+      [ItemName]="name.value"
+      [Category]="category.value"
+      [Price]="price.value"
+      [Url]="url.value"
+    ></app-product-display-card>
   </div>
 
   <div class="col-md-4">

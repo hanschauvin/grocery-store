@@ -1,3 +1,4 @@
+import { ProductDisplayCardComponent } from './products/product-display/product-display.component';
 import { IAppState, rootReducer, INITIAL_STATE } from './../redux/store';
 import { AdminAuthGuard } from './service/admin-auth-guard.service';
 import { UserService } from './service/user.service';
@@ -49,8 +50,8 @@ import { ProductDisplayComponent } from './Edit/product-display/product-display.
     AdminProdDisplayComponent,
     AdminProdEditComponent,
     ProductDisplayComponent,
-    
-    
+    ProductDisplayCardComponent
+
   ],
   imports: [
     BrowserModule,

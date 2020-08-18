@@ -1,0 +1,41 @@
+<input type="hidden" [value]="ItemID" />
+<mat-card>
+  <mat-card-header>
+    <mat-card-title *ngIf="ItemName; else nameDisplay">
+      {{ ItemName }}
+    </mat-card-title>
+    <ng-template #nameDisplay>
+      <mat-card-title>Product Name</mat-card-title>
+    </ng-template>
+
+    <mat-card-subtitle *ngIf="Category; else catDisplay">
+      {{ Category }}
+    </mat-card-subtitle>
+    <ng-template #catDisplay>
+      <mat-card-subtitle>Category</mat-card-subtitle>
+    </ng-template>
+  </mat-card-header>
+
+  <div class="text-center productImage">
+    <img *ngIf="Url; else imgDipslay" mat-card-image src="{{ Url }}" />
+    <ng-template #imgDipslay>
+      <mat-icon>wallpaper</mat-icon>
+    </ng-template>
+  </div>
+
+  <mat-card-content class="p-2">
+    <ng-container *ngIf="Price; else priceDisplay">
+      {{ Price | currency: "USD" }}
+    </ng-container>
+    <ng-template #priceDisplay>
+      $X.XX
+    </ng-template>
+
+    <div class="text-center" *ngIf="ShowCart">
+      <button mat-raised-button color="accent" (click)="addTocart(1)">
+        <mat-icon>shopping_cart</mat-icon>
+        Add to Cart
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

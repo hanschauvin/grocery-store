@@ -1,24 +1,30 @@
 <div class="row">
-  <div class="col-md-2 ml-4">
+  <div class="col-md-2 ml-4" style="padding-top: 8px;">
     <mat-selection-list
       #nutCategory
       (click)="selectedChange()"
       [(ngModel)]="nutModel"
       #nutSelect
     >
+      <div mat-subheader class="subHeader">Filter:</div>
       <mat-list-option *ngFor="let nuts of nutCats" value="{{ nuts }}">
         {{ nuts }}
       </mat-list-option>
     </mat-selection-list>
-    <div>Selected: {{ nutModel }}</div>
   </div>
 
   <div class="col-md-9">
-    <div *ngFor="let item of products">
-      <p>
-        {{ item.productName }}: {{ item.productPrice | currency: "USD" }} |
-        {{ item.productCategory }}
-      </p>
+    <div class="row">
+      <div *ngFor="let item of products" class="col-md-4 mb-2">
+        <app-product-display-card
+          [ItemID]="item.productID"
+          [ItemName]="item.productName"
+          [Category]="item.productCategory"
+          [Price]="item.productPrice"
+          [Url]="item.productUrl"
+          [ShowCart]="true"
+        ></app-product-display-card>
+      </div>
     </div>
   </div>
 </div>

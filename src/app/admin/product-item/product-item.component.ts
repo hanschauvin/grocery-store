@@ -1,4 +1,3 @@
-import { take } from 'rxjs/operators';
 import { ProductsService } from './../../service/products.service';
 import { ProductItemValidator } from './product-item.validators';
 import { IAppState } from './../../../redux/store';
@@ -11,7 +10,7 @@ import {
   RESET_PRODUCT_EDITING,
 } from '../../../redux/action';
 import { Router, ActivatedRoute } from '@angular/router';
-import { createUrlResolverWithoutPackagePrefix } from '@angular/compiler';
+
 
 @Component({
   selector: 'admin-product-item',
